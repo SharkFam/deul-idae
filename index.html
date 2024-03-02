@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>흐어!</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #touchButton {
+            padding: 20px;
+            font-size: 24px;
+            color: white;
+            background-color: #333;
+            border: none;
+            cursor: pointer;
+        }
+        #logo {
+            position: absolute;
+            bottom: 60px; /* 로고 이미지의 하단 여백 조절 */
+            width: 100px; /* 로고 이미지의 너비 조절 */
+            height: auto; /* 높이를 자동으로 조절하여 비율 유지 */
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out; /* 투명도 전환 트랜지션 */
+        }
+        #footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 14px; /* 글씨 크기 조절 */
+            color: white;
+        }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<button id="touchButton">클릭!</button>
+
+<video id="backgroundVideo" autoplay loop muted>
+    <source src="back.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<audio id="bgMusic" loop>
+    <source src="back.mp3" type="audio/mp3">
+    Your browser does not support the audio tag.
+</audio>
+
+<img id="logo" src="logo.png" alt="로고">
+
+<div id="footer">상어씌 디스코드 : s_shark</div>
+
+<script>
+    var touchButton = document.getElementById("touchButton");
+    var backgroundVideo = document.getElementById("backgroundVideo");
+    var bgMusic = document.getElementById("bgMusic");
+    var logo = document.getElementById("logo");
+    var footer = document.getElementById("footer");
+
+    touchButton.addEventListener("click", function() {
+        // "터치" 버튼을 클릭하면 페이지가 나타나고 음악이 자동으로 재생됨
+        backgroundVideo.style.display = "block";
+        bgMusic.play();
+
+        // "터치" 버튼을 숨김
+        touchButton.style.display = "none";
+
+        // 로고를 페이드 아웃
+        logo.style.opacity = 0;
+    });
+</script>
+
+</body>
+</html>
